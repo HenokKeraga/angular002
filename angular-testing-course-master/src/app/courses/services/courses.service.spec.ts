@@ -77,4 +77,22 @@ describe("courses service", () => {
 
 
   })
+
+  it('should retunn error if the save has error',()=>{
+let change: Partial<Course> = {
+  titles: {
+    description: "test description",
+    longDescription: "test long description",
+  },
+};
+
+    coursesService.saveCourse(1,change).subscribe(()=>{},error=>{expect(error.status).toBe(500)})
+
+   let testRequest:TestRequest= httpTestingController.expectOne("/api/courses/1");
+
+   testRequest.flush("", { status: 500, statusText: "Internal Server Error" });
+
+   expect(testRequest.request.method).toBe('PUT')
+
+  })
 });

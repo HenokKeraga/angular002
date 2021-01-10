@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">First</th>
+    <th scope="col">Last</th>
+    <th scope="col">Address</th>
+    <th scope="col">Edit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let employee of employees">
+    <th scope="row">{{employee.id}}</th>
+    <td>{{employee.name}}</td>
+    <td>{{employee.name}}</td>
+    <td>{{employee.address}}</td>
+    <td>
+      <a routerLink="/add/{{employee.id}}"><i class="fa fa-edit" style="font-size:20px;color:red"></i></a>&nbsp;&nbsp;&nbsp;
+      <i class="fa fa-trash" (click)="deleteEmployee(employee.id)" style="font-size:20px;color:red"></i>
+    </td>
+  </tr>
+  </tbody>
+</table>

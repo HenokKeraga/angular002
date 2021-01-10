@@ -1,10 +1,16 @@
+import { TestBed } from "@angular/core/testing"
 import { MessageService } from "./message.service"
 
 describe(" message service ",()=>{
  let messageService:MessageService 
 
  beforeEach(()=>{
-     messageService= new MessageService()
+    //  messageService= new MessageService()
+     TestBed.configureTestingModule({
+         providers:[MessageService]
+     })
+
+     messageService=TestBed.get(MessageService)
  })
 
  it(" should be zero for the start ",()=>{
